@@ -13,6 +13,9 @@ class MainActivity : MasterActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initActivity()
+        checkUser()
+
         val btnRegister = findViewById(R.id.btnRegister) as Button
 
         btnRegister.setOnClickListener {

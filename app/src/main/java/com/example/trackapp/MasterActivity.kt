@@ -30,6 +30,12 @@ open class MasterActivity: AppCompatActivity() {
 
         val sharedNameValue = sharedPreferences.getString("token","defaultname")
 
+        if (sharedNameValue != null) {
+
+            val intent = Intent(applicationContext, TrackActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
 
