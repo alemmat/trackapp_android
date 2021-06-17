@@ -9,18 +9,13 @@ import android.widget.Toast
 import com.example.test.ApiService
 
 class RegisterActivity : MasterActivity() {
-
-    lateinit var service: ApiService
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
-        service = this.settingRetrofit()
-
+        initActivity()
+        
         val btnRegister = findViewById(R.id.btnRegister) as Button
 
         btnRegister.setOnClickListener {
@@ -37,7 +32,11 @@ class RegisterActivity : MasterActivity() {
 
                 val register = Register( inputName.text.toString(), inputEmail.text.toString(), password, passwordConfirm)
 
-                this.registerUser(service, register)
+                this.registerUser(register)
+
+                val intent = Intent(applicationContext, TrackActivity::class.java)
+                startActivity(intent)
+                finish()
 
             }else{
 
