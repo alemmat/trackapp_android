@@ -1,5 +1,7 @@
 package com.example.trackapp
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -19,7 +21,29 @@ import java.util.concurrent.TimeUnit
 class TrackActivity : MasterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_track)
+
+        val btnTracking = findViewById(R.id.btnTracking) as Button
+
+        btnTracking.setOnClickListener {
+
+            launchPositionForegroundService()
+
+        }
+    }
+
+    private fun launchPositionForegroundService(){
+        Intent(this, PositionForegroundService::class.java).also {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+                startForegroundService(it)
+                return
+            }
+
+            startService(it)
+        }
     }
 }

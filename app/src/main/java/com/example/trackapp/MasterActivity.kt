@@ -3,6 +3,7 @@ package com.example.trackapp
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.location.LocationManager
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.test.ApiService
@@ -37,7 +38,6 @@ open class MasterActivity: AppCompatActivity() {
             finish()
         }
     }
-
 
     fun registerUser(register:Register){
 
